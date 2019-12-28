@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# != 1 ] 
+then
+    echo usage: ./$0 B1010
+    exit
+fi
+
+project=$1
+path=./projects/$project
+vscodePath=$path/.vscode
+mkdir $path 
+mkdir $vscodePath 
+cp -rf ./.vscode/* $vscodePath
+echo -e '#include <iostream>\nusing namespace std;\n\nint main() {\n\n\n return 0;\n}\n' > $path/$project.cpp
+cd $path
+code .
